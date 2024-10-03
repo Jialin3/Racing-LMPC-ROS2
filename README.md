@@ -32,7 +32,7 @@ https://github.com/HaoruXue/Racing-LMPC-ROS2/assets/32390737/745e5f15-f159-42ad-
   
 - casadi——源码安装：
   先把依赖装了：
-  ![casadi](https://github.com/casadi/casadi/wiki/InstallationLinux)
+  [casadi](https://github.com/casadi/casadi/wiki/InstallationLinux)
   ```bash
   git clone https://github.com/casadi/casadi.git
   cd casadi
