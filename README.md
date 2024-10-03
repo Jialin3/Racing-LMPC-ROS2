@@ -14,12 +14,34 @@ https://github.com/HaoruXue/Racing-LMPC-ROS2/assets/32390737/745e5f15-f159-42ad-
 
 ### Dependencies
 
-- Ubuntu 22.04
-- [ROS2 Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
-- CasADi >= 3.6.3. Must be built from source, since the pre-compiled binary is C++ 11 and therefore not ABI compatible with C++ 17.
-  - See [here](https://github.com/casadi/casadi/wiki/InstallationLinux) for official build instructions.
-  - Refer to the "Build Casadi" section in CI file [here](.github/workflows/ros2-humble-ci.yaml) for a working build instruction. Note that we installed `llvm` for JIT compilation, and ipopt for nonlinear optimization. Also note that we appended `/usr/local/lib` to `LD_LIBRARY_PATH` in order to find the shared library `libcasadi.so` at runtime.
-- Foxglove Studio (optional). Rviz2 is fine too. See [here](https://foxglove.dev/) for installation instructions.
+- Ubuntu 22.04 ros2 humble
+- osqp——用源码安装：
+  ```bash
+  git clone --recursive https://github.com/osqp/osqp
+  cd osqp
+  mkdir build && cd build
+  cmake .. && make -j4
+  sudo make install
+  sudo ldconfig
+  ```
+  
+- ipopt——apt安装：
+  ```bash
+  sudo apt install coinor-libipopt-dev
+   ```
+  
+- casadi——源码安装：
+  先把依赖装了：
+  ![casadi](https://github.com/casadi/casadi/wiki/InstallationLinux)
+  ```bash
+  git clone https://github.com/casadi/casadi.git
+  cd casadi
+  mkdir build && cd build
+  cmake .. -DWITH_PYTHON=ON -DWITH_OSQP=ON -DWITH_IPOPT=ON -DCMAKE_BUILD_TYPE=Release -DPYTHON_PREFIX=/usr/local/lib/python3.10/dist-packages
+  make -j4
+  sudo make install
+  sudo ldconfig
+  ```
 
 ### Build
 
