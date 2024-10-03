@@ -8,6 +8,9 @@ Paper: [Learning Model Predictive Control with Error Dynamics Regression for Aut
 
 ![lmpc-foxglove](vis.gif)
 
+复现测试：
+![lmpc_test](test.webm)
+
 https://github.com/HaoruXue/Racing-LMPC-ROS2/assets/32390737/745e5f15-f159-42ad-be74-ac5673867a03
 
 ## Install
